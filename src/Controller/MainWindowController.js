@@ -66,7 +66,7 @@ document.getElementById('dialogAddTask').addEventListener('click', () => {
   content.value = ""
 })
 
-//Este controlador maneja los eventos relacionados con la lista de tareas
+//Este controlador maneja los eventos relacionados con la lista de tareas(lectura modificación y borrado)
 document.getElementById('Tasks').addEventListener('click', (event) => {
 
   
