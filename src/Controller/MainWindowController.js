@@ -1,5 +1,9 @@
 
 import '../View/Components/TaskCard.js'
+import  Task from '../Model/TaskManager.js';'../Model/Task.js'
+import TaskManager from '../Model/TaskManager.js';'../Model/TaskManager.js'
+
+const manager = new TaskManager();
 
 //Controlador del Boton que abre el dialogo
 document.getElementById('openDialog').addEventListener('click', () => {
@@ -53,11 +57,13 @@ document.getElementById('dialogAddTask').addEventListener('click', () => {
 
   const title = document.getElementById('nombre');
   const content = document.getElementById('descripcion');
+  const auxTask = new Task(title.value,content.value);
   // Crea un nuevo elemento <li>
   newcard.setAttribute('title', title.value);
   newcard.setAttribute('content', content.value);
 
   // Añade el nuevo <li> al final de la lista
+  manager.addTask(auxTask);
   tasksList.appendChild(newcard);
   const dialogo = document.getElementById('addDialog');
   dialogo.close();
@@ -123,7 +129,9 @@ document.getElementById('Tasks').addEventListener('click', (event) => {
   }
 //Fin del fragmento de código a la eliminación de tareas de la lista de tareas
 })
-
+document.getElementById('prueba').addEventListener('click',()=>{
+  console.log(manager.getTaskList());
+})
 
 
 
