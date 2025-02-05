@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz con Navegación y Aside Mejorada</title>
+    <link rel="stylesheet" href="styles/CardStyle.css">
+    <link rel="stylesheet" href="styles/MainWindowStyle.css">
+    <link rel="stylesheet" href="styles/modalstyle.css">
+    <script type="module" src="../controller/MainWindowController.js" defer></script>
+    <script type="module" src="../controller/controladorprueba.js" defer></script>
+    <script src="components/TaskCard.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Acerca de</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="main-content">
+            <aside>
+                <ul>
+                    <li><a href="#">Opción 1</a></li>
+                    <li><a href="#">Opción 2</a></li>
+                    <li><a href="#">Opción 3</a></li>
+                </ul>
+            </aside>
+            <main>
+
+                <h1>Contenido principal</h1>
+                <button id="openDialog" class="add-task-btn">Añadir tarea</button>
+                <button id="prueba"> asdas</button>
+                <!--Dialogo que permite añadir una nueva tarea-->
+                <dialog id="addDialog" class="modal">
+                    <div class="modal-content">
+                        <span  class="close">&times;</span>
+                        <form>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required>
+
+                            <label for="Descripcion"> Descripcion</label>
+                            <textarea type="text" id="descripcion" name="Descripcion"  ></textarea>
+
+                            
+
+                            <label for="estado">Estado</label>
+                            <select id="estado" name="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="trabajando">Trabajando</option>
+                                <option value="completado">Completado</option>
+                            </select>
+
+                            <button id="closeModal" type="button" onclick="cancelar()">Cancelar</button>
+                            <button id="dialogAddTask" type="submit">Aceptar</button>
+                        </form>
+
+                    </div>
+                </dialog>
+                <!--Dialogo que permite visualizar y modificar una tarea-->
+                <dialog id="viewDialog" class="modal">
+                    <div class="modal-content">
+                        <span id="aspaViewDialog" class="close">&times;</span>
+                        <form>
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="viewName" name="nombre" required>
+
+                            <label for="Descripcion"> Descripcion</label>
+                            <textarea type="text" id="viewContent" name="Descripcion"  ></textarea>
+
+                            
+
+                            <label for="estado">Estado</label>
+                            <select id="estado" name="estado">
+                                <option value="pendiente">Pendiente</option>
+                                <option value="trabajando">Trabajando</option>
+                                <option value="completado">Completado</option>
+                            </select>
+
+                            <button id="closeViewModal" type="button" >Cancelar</button>
+                            
+                        </form>
+
+                    </div>
+                </dialog>
+                <!--Lista de tareas-->
+                <ul id="Tasks" class="card-list">
+
+                    
+                </ul>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

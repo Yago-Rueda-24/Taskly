@@ -1,16 +1,39 @@
 {
+<<<<<<< HEAD
   "name": "electron",
   "version": "1.0.0",
   "main": "src/Controller/EntryPoint.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
+=======
+  "name": "taskly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main.js",
+  "scripts": {
+    "start": "tsc && electron .",
+    "dev": "ts-node src/main.ts",
+    "build": "tsc"
+>>>>>>> 1b89a74 (Init Commit)
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "description": "",
   "devDependencies": {
     "electron": "^33.3.1"
   }
 }
+=======
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/electron": "^1.4.38",
+    "@types/node": "^22.13.1",
+    "electron": "^34.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
+>>>>>>> 1b89a74 (Init Commit)
