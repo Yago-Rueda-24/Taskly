@@ -19,4 +19,9 @@ export default class TaskManager{
         
     }
 
+    public get Tasklist(): Array<Task>{
+        return this.TaskList;
+    }
+
+
 }
