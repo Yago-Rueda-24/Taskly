@@ -1,4 +1,4 @@
-import '../View/Components/TaskCard.js';
+import TaskCard from "../view/components/TaskCard.js";
 import Task from "../model/Task.js"
 import TaskManager from "../model/TaskManager.js";
 
