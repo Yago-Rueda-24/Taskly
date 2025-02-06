@@ -20,13 +20,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-<<<<<<< HEAD
-  "description": "",
-  "devDependencies": {
-    "electron": "^33.3.1"
-  }
-}
-=======
   "type": "commonjs",
   "devDependencies": {
     "@types/electron": "^1.4.38",
