@@ -1,4 +1,4 @@
-class TaskCard extends HTMLElement {
+export default class TaskCard extends HTMLElement {
     constructor() {
         super();
     }
@@ -41,4 +41,4 @@ if (!customElements.get('task-card')) {
     customElements.define('task-card', TaskCard);
 }
 
-export default TaskCard;
+
