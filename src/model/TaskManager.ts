@@ -1,4 +1,4 @@
-import Task from "./Task";
+import Task from "./Task.js";
 
 export default class TaskManager{
 
@@ -9,8 +9,18 @@ export default class TaskManager{
         this.TaskList = new Array();
     }
 
-    public addTask(aux:Task){
-        this.TaskList.push(aux);
+    public addTask(taskName:string, taskContent:string):number{
+        const auxtask:Task = new Task(taskName,taskContent);
+        
+        this.TaskList.forEach(element => {
+            if(element.taskName === auxtask.taskName){
+                return 1;
+            }
+            
+        });
+
+        this.TaskList.push(auxtask);
+        return 0;
     }
 
     public removeTask(aux:Task){

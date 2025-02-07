@@ -34,12 +34,12 @@ document.getElementById('dialogAddTask')?.addEventListener('click', () => {
     const newCard = document.createElement('task-card');
     const title = document.getElementById('nombre') as HTMLInputElement;
     const content = document.getElementById('descripcion') as HTMLInputElement;
-    const auxTask = new Task(title.value, content.value);
+    
     
     newCard.setAttribute('title', title.value);
     newCard.setAttribute('content', content.value);
     
-    manager.addTask(auxTask);
+    manager.addTask(title.value,content.value);
     tasksList?.appendChild(newCard);
     
     const dialogo = document.getElementById('addDialog') as HTMLDialogElement;
