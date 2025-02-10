@@ -1,6 +1,7 @@
 import TaskCard from "../view/components/TaskCard.js";
 import Task from "../model/Task.js"
 import TaskManager from "../model/TaskManager.js";
+import { dialog } from "electron";
 
 const manager = new TaskManager();
 
@@ -11,7 +12,7 @@ document.getElementById('openDialog')?.addEventListener('click', () => {
     const span = document.getElementsByClassName('close')[0] as HTMLElement;
     const nameInput = document.getElementById('nombre') as HTMLInputElement;
     const description = document.getElementById('descripcion') as HTMLInputElement;
-    
+
     dialogo.showModal();
 
     const closeDialog = () => {
@@ -22,70 +23,105 @@ document.getElementById('openDialog')?.addEventListener('click', () => {
 
     span.onclick = closeDialog;
     btnClose.onclick = closeDialog;
-    
-    window.onclick = (event: MouseEvent) => {
-        if (event.target === dialogo) closeDialog();
-    };
+
+
 });
 
 // Controlador del botón que añade la tarea a la lista
 document.getElementById('dialogAddTask')?.addEventListener('click', () => {
+
     const tasksList = document.getElementById('Tasks');
     const newCard = document.createElement('task-card');
     const title = document.getElementById('nombre') as HTMLInputElement;
     const content = document.getElementById('descripcion') as HTMLInputElement;
-    
-    
-    newCard.setAttribute('title', title.value);
-    newCard.setAttribute('content', content.value);
-    
-    manager.addTask(title.value,content.value);
-    tasksList?.appendChild(newCard);
-    
     const dialogo = document.getElementById('addDialog') as HTMLDialogElement;
-    dialogo.close();
-    title.value = '';
-    content.value = '';
+
+    if (title.value !== "") {
+
+        if (manager.addTask(title.value, content.value) === 0) {
+
+            newCard.setAttribute('title', title.value);
+            newCard.setAttribute('content', content.value);
+            tasksList?.appendChild(newCard);
+            dialogo.close();
+            title.value = '';
+            content.value = '';
+        }
+        else {
+            //TODO: Informar de que hubo un error al añadir el elemento a la lista
+        }
+
+
+    } else {
+        //TODO: Informar de que hubo un error al introducir los parametros en el dialogo
+    }
 });
 
 // Controlador de eventos en la lista de tareas
 document.getElementById('Tasks')?.addEventListener('click', (event: Event) => {
-    const target = event.target as HTMLElement;
-    
+    let target = event.target as HTMLElement;
+
     // Lectura y modificación de tareas
     if (target.matches('task-card button.btn-info')) {
-        const card = target.closest('task-card');
+        let card = target.closest('task-card');
         const dialogo = document.getElementById('viewDialog') as HTMLDialogElement;
         const dialogTitle = document.getElementById('viewName') as HTMLInputElement;
         const dialogContent = document.getElementById('viewContent') as HTMLInputElement;
-        
+        let oldName: string;
+
+
+
+
         if (card) {
-            dialogTitle.value = card.getAttribute('title') || '';
-            dialogContent.value = card.getAttribute('content') || '';
+            oldName = card.getAttribute('title') ?? "";
+            dialogTitle.value = oldName;
+            dialogContent.value = card.getAttribute('content') ?? "";
             dialogo.showModal();
         }
 
         const closeDialog = () => {
-            card?.setAttribute('title', dialogTitle.value);
-            card?.setAttribute('content', dialogContent.value);
-            dialogo.close();
-            dialogTitle.value = '';
-            dialogContent.value = '';
+
+            if (dialogTitle.value !== "") {
+
+                if (oldName !== dialogTitle.value) {
+                    manager.removeTask(oldName);
+                    manager.addTask(dialogTitle.value, dialogContent.value);
+
+                    if (card) {
+                 
+                        card.setAttribute('title', dialogTitle.value);
+                        card.setAttribute('content', dialogContent.value);
+       
+                    }
+                }
+
+                dialogo.close();
+
+
+                dialogTitle.value = '';
+                dialogContent.value = '';
+            } else {
+                //TODO avisar al usuario de que no puede intrdocuir un campo vacio
+            }
         };
-        
+
+
         document.getElementById('closeViewModal')?.addEventListener('click', closeDialog);
         document.getElementById('aspaViewDialog')?.addEventListener('click', closeDialog);
-        window.onclick = (event: MouseEvent) => {
-            if (event.target === dialogo) closeDialog();
-        };
+
     }
 
     // Eliminación de tareas
     if (target.matches('task-card button.btn-delete')) {
         const card = target.closest('task-card');
+        //Solucionar esto
+        manager.removeTask(card?.getAttribute('title') ?? "");
         card?.remove();
+
     }
 });
+
+
 
 // Prueba para listar tareas almacenadas
 document.getElementById('prueba')?.addEventListener('click', () => {
@@ -93,4 +129,6 @@ document.getElementById('prueba')?.addEventListener('click', () => {
     tasks.forEach(task => {
         console.log(task.taskName);
     });
+    manager.toJSON();
+
 });
