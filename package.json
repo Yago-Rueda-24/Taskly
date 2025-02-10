@@ -14,8 +14,8 @@
   "scripts": {
     "start": "tsc && electron .",
     "dev": "ts-node src/main.ts",
-    "build": "tsc"
->>>>>>> 1b89a74 (Init Commit)
+    "build": "tsc",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest"
   },
   "keywords": [],
   "author": "",
@@ -23,10 +23,12 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/electron": "^1.4.38",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.1",
-    "electron": "^34.0.2",
+    "electron": "^34.1.1",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }
 }
->>>>>>> 1b89a74 (Init Commit)
