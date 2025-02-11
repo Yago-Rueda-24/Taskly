@@ -1,6 +1,5 @@
-import TaskCard from "../view/components/TaskCard.js";
-import Task from "../model/Task.js"
-import TaskManager from "../model/TaskManager.js";
+import TaskCard from "../View/Components/TaskCard.js";
+import TaskManager from "../Model/TaskManager.js";
 import { dialog } from "electron";
 
 const manager = new TaskManager();
