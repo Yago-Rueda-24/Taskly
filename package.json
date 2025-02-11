@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "electron",
-  "version": "1.0.0",
-  "main": "src/Controller/EntryPoint.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
-=======
   "name": "taskly",
   "version": "1.0.0",
   "description": "",
@@ -20,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
     "@types/electron": "^1.4.38",
     "@types/jest": "^29.5.14",
