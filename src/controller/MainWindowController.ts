@@ -128,6 +128,6 @@ document.getElementById('prueba')?.addEventListener('click', () => {
     tasks.forEach(task => {
         console.log(task.taskName);
     });
-    manager.toJSON();
+   
 
 });

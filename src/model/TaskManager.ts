@@ -58,10 +58,6 @@ export default class TaskManager {
         return this.TaskList.length;
     }
 
-    public toJSON() {
-        let taskJson = JSON.stringify(this.Tasklist, null, 2);
-
-
-    }
+   
 
 }
