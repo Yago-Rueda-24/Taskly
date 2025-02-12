@@ -10,12 +10,16 @@ export default class TaskManager {
         this.TaskList = new Array();
     }
 
+    private containsTask(taskName: string): boolean {
+        return (this.Tasklist.some(element => element.taskName == taskName));
+
+    }
 
 
     public addTask(taskName: string, taskContent: string): number {
         const auxtask: Task = new Task(taskName, taskContent);
 
-        if (this.Tasklist.some(element => element.taskName == auxtask.taskName)) {
+        if (this.containsTask(taskName)) {
             return 1;
         }
 
@@ -23,7 +27,7 @@ export default class TaskManager {
         return 0;
     }
 
-    public removeTask(removedTaskName: string):number {
+    public removeTask(removedTaskName: string): number {
 
         if (!this.Tasklist.some(element => element.taskName == removedTaskName)) {
             return 1;
@@ -34,11 +38,11 @@ export default class TaskManager {
 
     }
 
-    public modifyName(oldName:string,newName:string):number{
+    public modifyName(oldName: string, newName: string): number {
 
 
-        let findIndex = this.TaskList.findIndex(element=> element.taskName == oldName);
-        if(findIndex === -1){
+        let findIndex = this.TaskList.findIndex(element => element.taskName == oldName);
+        if (findIndex === -1) {
             return 1;
         }
         this.TaskList.at(findIndex)!.taskName = newName;
