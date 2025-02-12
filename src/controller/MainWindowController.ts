@@ -1,4 +1,4 @@
-import TaskCard from "../view/Components/TaskCard.js";
+import TaskCard from "../view/components/TaskCard.js";
 import TaskManager from "../model/TaskManager.js";
 import { dialog } from "electron";
 
