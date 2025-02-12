@@ -1,5 +1,5 @@
 
-import TaskManager from "../src/Model/TaskManager.js";
+import TaskManager from "../src/model/TaskManager.js";
 
 let manager = new TaskManager();
 
